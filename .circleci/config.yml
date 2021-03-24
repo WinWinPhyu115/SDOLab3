@@ -1,0 +1,15 @@
+commands:
+  install_deps:
+    steps:
+      - run:
+        name: Install dependicies
+        command: |
+          npm ci --prefix src/
+
+jobs:
+  ci-build:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - install_deps
